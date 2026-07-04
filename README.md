@@ -1,99 +1,39 @@
-# Mritunjay | DevHQ
+# Mritunjay Portfolio
 
-A personal developer portfolio built around a terminal / CI-pipeline motif — fitting
-for someone who spends most of their time in backend architecture, queues, and
-containerized infra.
+A personal portfolio website built with Next.js, Tailwind CSS, and Framer Motion.
+The site uses a terminal-inspired visual style and is designed to present projects,
+skills, experience, and contact details in a unique way.
 
-Built with **Next.js (App Router) + JavaScript + Tailwind CSS + Framer Motion**.
-No TypeScript, no component library dependency — just plain React components so
-it's easy to read and extend.
+## Tech Stack
 
-## Design direction
+- Next.js 14
+- React
+- Tailwind CSS
+- Framer Motion
 
-- **Palette**: near-black background (`#0a0b0d`), amber signal accent (`#ffb020`),
-  with green/red used only as semantic pipeline states (success / running), never
-  as decoration.
-- **Motif**: the whole page is framed as a terminal session. The nav is a tab bar,
-  section headings are typed commands (`cat about.md`, `ls skills/`,
-  `pipeline status --all`, `git log --oneline`), and the hero types out `whoami`
-  before revealing the content.
-- **Projects** are rendered as CI/CD pipeline runs (status badge, duration, stack
-  tags, source link) instead of generic cards — CodePulse is marked `running`
-  since it's actively in development; the rest are marked `passed`.
-- **Experience/Education** are a git-log-style vertical timeline, since that
-  content really is chronological.
-
-## Getting started
+## Run Locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Then open http://localhost:3000.
 
-## Project structure
+## Project Structure
 
-```
-app/
-  layout.jsx        Root layout, fonts (Inter + JetBrains Mono), SEO metadata
-  page.jsx           Assembles all sections
-  globals.css        Base styles, focus states, reduced-motion support
-  sitemap.js          SEO sitemap
-  robots.js           SEO robots config
-  icon.svg            Favicon
-components/
-  Nav.jsx             Sticky terminal-tab-bar navigation
-  Hero.jsx            Typewriter intro
-  About.jsx
-  Skills.jsx          Grouped skill "directories"
-  Projects.jsx        Pipeline-run project cards (signature element)
-  Experience.jsx       Git-log-style experience + education timeline
-  Contact.jsx
-  Footer.jsx
-  TerminalWindow.jsx  Reusable terminal chrome wrapper
-  SectionHeading.jsx  Command-line style section heading
-lib/
-  data.js             All content lives here — edit this file to update the site
-public/
-  resume-mritunjay.pdf
-```
+- app/ - App Router pages and global styles
+- components/ - UI sections such as Hero, About, Projects, and Contact
+- lib/ - Content data used to populate the site
+- public/ - Static assets such as the resume PDF
 
-## Editing content
-
-Everything text-based (name, bio, skills, project descriptions, experience,
-education, links) lives in **`lib/data.js`**. You won't need to touch component
-files to update copy.
-
-To swap the resume file, replace `public/resume-mritunjay.pdf` and keep the same
-filename, or update `resumeHref` in `lib/data.js`.
-
-## Filling in gaps
-
-A few things were intentionally left out because the source resume didn't
-include them — add them to `lib/data.js` and wire up a section if/when you have
-the content:
-
-- Profile photo (currently text-only hero, by design — add an `<Image>` in
-  `Hero.jsx` if you want one)
-- Certifications
-- Achievements
-- Real per-project GitHub repo URLs (all currently point to the profile page —
-  update `github` in each project object in `lib/data.js`)
-
-## Deployment
-
-Push to a GitHub repo and import it in [Vercel](https://vercel.com/new) — zero
-config needed, it's a standard Next.js app. Or:
+## Build for Production
 
 ```bash
 npm run build
 npm run start
 ```
 
-## Accessibility & performance notes
+## Deployment
 
-- Keyboard focus is visible everywhere (`:focus-visible` outline in `globals.css`)
-- `prefers-reduced-motion` disables animation for users who've asked for it
-- Fonts are loaded via `next/font/google` (self-hosted, no layout shift)
-- Fully responsive from mobile up
+Deploy easily to Vercel or any platform that supports Next.js.
